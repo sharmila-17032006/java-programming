@@ -5,37 +5,33 @@ import java.math.*;
 import java.util.regex.*;
 
 public class Solution {
-
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);  
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        if (n < 1 || n > 20 || m < 1 || m > 20) {
+        Scanner sc = new Scanner(System.in);    
+        int n = sc.nextInt(); 
+        int m = sc.nextInt(); 
+        if (n < 1 || m < 1 || n > 20 || m > 20 || n > m) {
             System.out.println("Invalid Input");
             return;
         }
-        if (n > m) {
-            System.out.println("Invalid Input");
-            return;
-        }
-        double fib1 = 0, fib2 = 1, fibCurrent = 0;
         double sum = 0;
-        
+        int a = 0, b = 1;
+
         for (int i = 1; i <= m; i++) {
+            int fib;
             if (i == 1) {
-                fibCurrent = fib1;
+                fib = a;
             } else if (i == 2) {
-                fibCurrent = fib2;
+                fib = b;
             } else {
-                fibCurrent = fib1 + fib2;
-                fib1 = fib2;
-                fib2 = fibCurrent;
+                fib = a + b;
+                a = b;
+                b = fib;
             }
-            if (i >= n) {
-                sum += fibCurrent;
+
+            if (i >= n && i <= m) {
+                sum += fib;
             }
         }
-        
         System.out.println("The Sum of Fibonacci value is " + sum);
     }
 }
