@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        if (num < 10) {
+            System.out.println("STDOUT");
+            return;
+        }
+        int temp = num;
+        int digits = 0;
+        while (temp > 0) {
+            digits++;
+            temp /= 10;
+        }
+        int divisor = (int) Math.pow(10, digits - 2);
+        int firstTwo = num / divisor;
+        int first = firstTwo / 10;
+        int second = firstTwo % 10;
+        int swapped = second * 10 + first;
+        System.out.println(swapped);
+    }
+}
+
