@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Main {
+    public static int countDigits(int num) {
+        if (num == 0) {
+            return 0;
+        }
+        return 1 + countDigits(num / 10);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        if (num == 0) {
+            System.out.println("The Count the digits: 1");
+        } else {
+            num = Math.abs(num);
+            int count = countDigits(num);
+            System.out.println("The Count the digits: " + count);
+        }
+        
+    }
+}
